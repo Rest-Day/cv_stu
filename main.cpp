@@ -1,9 +1,12 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include <sys/stat.h>
 
 int main()
 {
+	mkdir("./output", 0777); 
+	
 	std::string paths = "./input/*.png";
 	std::vector<cv::String> filenames;
 
