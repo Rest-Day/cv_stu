@@ -1,0 +1,3 @@
+/home/zhoushan/code/cv_stu/build/CMakeFiles/main.dir
+/home/zhoushan/code/cv_stu/build/CMakeFiles/edit_cache.dir
+/home/zhoushan/code/cv_stu/build/CMakeFiles/rebuild_cache.dir
