@@ -26,7 +26,7 @@ int main()
 		path = filenames[i];
 		img = cv::imread(path);
 		cv::cvtColor(img, gray, cv::COLOR_BGR2GRAY);
-		cv::threshold(gray, binary, 127, 255, cv::THRESH_BINARY);
+		cv::threshold(gray, binary, 127, 255, cv::THRESH_BINARY_INV | cv::THRESH_OTSU);
 		cv::findContours(binary, lunkuo, xi, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 		for (size_t j = 0; j < lunkuo.size(); j ++)
 		{
@@ -34,11 +34,11 @@ int main()
 			{
 				continue;
 			}
-			double c = cv::arcLength(lunkuo[i], true);
-			cv::approxPolyDP(lunkuo[i], lun, 0.02 * c, true);
+			double c = cv::arcLength(lunkuo[j], true);
+			cv::approxPolyDP(lunkuo[j], lun, 0.02 * c, true);
 			if (lun.size() == 4)
 			{
-				cv::drawContours(img, lunkuo, (int)j, cv::Scalar(0, 255, 0), 2);
+				cv::drawContours(img, std::vector<std::vector<cv::Point>>{lun}, (int)j, cv::Scalar(0, 255, 0), 2);
 			}
 		}
 		num = path.find_last_of("/\\");
